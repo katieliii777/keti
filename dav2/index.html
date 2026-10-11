@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ka">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Velora Auto — ავტომობილების ბაზარი</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <a href="#" class="logo" onclick="showPage('home'); return false">V<span>ELORA AUTO</span></a>
+      <nav>
+        <button class="active" data-page="home" onclick="showPage('home')">მთავარი</button>
+        <button data-page="catalog" onclick="showPage('catalog')">ავტომობილები</button>
+        <button data-page="cart" onclick="showPage('cart')">შენახული ♡ <b id="count">0</b></button>
+      </nav>
+    </header>
+
+    <section id="home" class="page active">
+      <div class="hero">
+        <div>
+          <div class="tag">PREMIUM AUTOMOTIVE MARKET</div>
+          <h1>იპოვე მანქანა,<br /><em>რომელიც შენ გგავს.</em></h1>
+          <p>შეარჩიე სასურველი ავტომობილი, შეადარე ფასები და იპოვე შენი შემდეგი მანქანა ერთ სივრცეში.</p>
+          <button class="btn" onclick="showPage('catalog')">ავტომობილების ნახვა ↗</button>
+        </div>
+        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=85" alt="ავტომობილი" />
+      </div>
+
+      <div class="search-panel">
+        <h2>იპოვე შენი ავტომობილი</h2>
+        <form id="homeSearch">
+          <input id="homeQuery" placeholder="ბრენდი ან მოდელი" />
+          <select id="homeMin">
+            <option value="">ფასი მინიმუმ</option>
+            <option value="5000">$5,000</option>
+            <option value="10000">$10,000</option>
+            <option value="20000">$20,000</option>
+            <option value="30000">$30,000</option>
+          </select>
+          <select id="homeMax">
+            <option value="">ფასი მაქსიმუმ</option>
+            <option value="15000">$15,000</option>
+            <option value="30000">$30,000</option>
+            <option value="50000">$50,000</option>
+            <option value="100000">$100,000</option>
+            <option value="250000">$250,000</option>
+          </select>
+          <button class="btn" type="submit">ძიება ⌕</button>
+        </form>
+      </div>
+
+      <main class="container">
+        <div class="section-title">
+          <div>
+            <div class="tag">OUR SELECTION</div>
+            <h2>რჩეული ავტომობილები</h2>
+          </div>
+          <button class="btn" onclick="showPage('catalog')">ყველას ნახვა →</button>
+        </div>
+        <div class="car-grid" id="featuredCars"></div>
+        <section class="promo">
+          <div class="tag">YOUR NEXT JOURNEY</div>
+          <h2>შენი არჩევანი.<br /><em>შენი გზა.</em></h2>
+          <p>ათვალიერე სხვადასხვა ბრენდი და იპოვე შენთვის იდეალური ავტომობილი.</p>
+          <button class="btn" onclick="showPage('catalog')">კატალოგის გახსნა ↗</button>
+        </section>
+      </main>
+    </section>
+
+    <section id="catalog" class="page">
+      <main class="container catalog">
+        <div class="tag">EXPLORE THE COLLECTION</div>
+        <h1>ავტომობილების <em>კატალოგი</em></h1>
+        <p class="muted">შეარჩიე სასურველი ფასი, წელი, ფერი და საწვავის ტიპი.</p>
+
+        <div class="filters">
+          <input id="query" placeholder="🔍 ბრენდი ან მოდელი..." />
+          <select id="brand">
+            <option value="">ყველა ბრენდი</option>
+            <option>BMW</option>
+            <option>Mercedes-Benz</option>
+            <option>Toyota</option>
+            <option>Audi</option>
+            <option>Porsche</option>
+            <option>Tesla</option>
+            <option>Lexus</option>
+            <option>Ford</option>
+            <option>Honda</option>
+            <option>Range Rover</option>
+            <option>Hyundai</option>
+            <option>Lamborghini</option>
+          </select>
+          <select id="minPrice">
+            <option value="">ფასი მინიმუმ</option>
+            <option value="5000">$5,000</option>
+            <option value="10000">$10,000</option>
+            <option value="20000">$20,000</option>
+            <option value="30000">$30,000</option>
+            <option value="50000">$50,000</option>
+          </select>
+          <select id="maxPrice">
+            <option value="">ფასი მაქსიმუმ</option>
+            <option value="10000">$10,000</option>
+            <option value="20000">$20,000</option>
+            <option value="30000">$30,000</option>
+            <option value="50000">$50,000</option>
+            <option value="75000">$75,000</option>
+            <option value="100000">$100,000</option>
+            <option value="150000">$150,000</option>
+            <option value="250000">$250,000</option>
+          </select>
+          <select id="year">
+            <option value="">ყველა წელი</option>
+            <option value="2023">2023+</option>
+            <option value="2020">2020+</option>
+            <option value="2018">2018+</option>
+            <option value="2015">2015+</option>
+          </select>
+          <select id="color">
+            <option value="">ყველა ფერი</option>
+            <option>თეთრი</option>
+            <option>შავი</option>
+            <option>ნაცრისფერი</option>
+            <option>ლურჯი</option>
+            <option>წითელი</option>
+            <option>ვერცხლისფერი</option>
+            <option>ყვითელი</option>
+          </select>
+          <select id="fuel">
+            <option value="">ყველა საწვავი</option>
+            <option>ბენზინი</option>
+            <option>დიზელი</option>
+            <option>ჰიბრიდი</option>
+            <option>ელექტრო</option>
+          </select>
+          <select id="transmission">
+            <option value="">გადაცემათა კოლოფი</option>
+            <option>ავტომატიკა</option>
+            <option>მექანიკა</option>
+          </select>
+          <select id="sort">
+            <option value="default">რეკომენდებული</option>
+            <option value="low">ფასი: დაბლიდან</option>
+            <option value="high">ფასი: მაღლიდან</option>
+            <option value="new">წელი: ახალიდან</option>
+          </select>
+          <button class="btn" id="reset" type="button">გასუფთავება ↺</button>
+        </div>
+
+        <div class="results" id="resultCount"></div>
+        <div class="car-grid" id="catalogCars"></div>
+        <div class="empty" id="noResults" hidden>
+          <h2>მანქანა ვერ მოიძებნა</h2>
+          <p>შეცვალე ფილტრები ან გაასუფთავე ძიება.</p>
+          <button class="btn" onclick="resetFilters()">ფილტრების გასუფთავება</button>
+        </div>
+      </main>
+    </section>
+
+    <section id="cart" class="page">
+      <main class="container catalog">
+        <div class="tag">YOUR COLLECTION</div>
+        <h1>შენი <em>შენახული მანქანები</em></h1>
+        <p class="muted">შეინახე სასურველი ავტომობილები და შეადარე მათი ფასები.</p>
+        <div class="cart-summary">
+          <div>
+            <span class="muted">შენახული ავტომობილები</span>
+            <h2 id="cartCount">0 ავტომობილი</h2>
+          </div>
+          <button class="btn" onclick="showPage('catalog')">+ მანქანის დამატება</button>
+        </div>
+        <div class="car-grid" id="cartCars"></div>
+        <div class="empty" id="cartEmpty">
+          <div class="empty-icon">♡</div>
+          <h2>შენი სია ჯერ ცარიელია</h2>
+          <p>კატალოგში გულის ღილაკს დააჭირე მანქანის შესანახად.</p>
+          <button class="btn" onclick="showPage('catalog')">კატალოგის ნახვა ↗</button>
+        </div>
+      </main>
+    </section>
+
+    <footer>© 2026 Velora Auto · შენი გზა იწყება სწორი არჩევანით</footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
